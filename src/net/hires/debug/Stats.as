@@ -1,4 +1,4 @@
-/**
+﻿/**
  * stats.as
  * http://github.com/mrdoob/stats.as
  * 
@@ -13,11 +13,11 @@
 
 package net.hires.debug
 {
-	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.geom.Matrix;
 	import flash.geom.Rectangle;
 	import flash.system.System;
 	import flash.text.StyleSheet;
@@ -41,7 +41,7 @@ package net.hires.debug
 		protected var mem : Number;
 		protected var mem_max : Number;
 		
-		protected var graph : Bitmap;
+		protected var graph : BitmapData;
 		protected var rectangle : Rectangle;
 		
 		protected var fps_graph : uint;
@@ -85,9 +85,6 @@ package net.hires.debug
 			text.selectable = false;
 			text.mouseEnabled = false;
 			
-			graph = new Bitmap();
-			graph.y = 50;
-			
 			rectangle = new Rectangle( WIDTH - 1, 0, 1, HEIGHT - 50 );			
 			
 			addEventListener(Event.ADDED_TO_STAGE, init, false, 0, true);
@@ -102,8 +99,9 @@ package net.hires.debug
 
 			addChild(text);
 			
-			graph.bitmapData = new BitmapData(WIDTH, HEIGHT - 50, false, theme.bg);
-			addChild(graph);
+			graph = new BitmapData(WIDTH, HEIGHT - 50, false, theme.bg);
+			graphics.beginBitmapFill (graph, new Matrix (1, 0, 0, 1, 0, 50));
+			graphics.drawRect(0, 50, WIDTH, HEIGHT - 50);
 			
 			addEventListener(MouseEvent.CLICK, onClick);
 			addEventListener(Event.ENTER_FRAME, update);
@@ -116,7 +114,7 @@ package net.hires.debug
 			while(numChildren > 0)
 				removeChildAt(0);			
 			
-			graph.bitmapData.dispose();
+			graph.dispose();
 			
 			removeEventListener(MouseEvent.CLICK, onClick);
 			removeEventListener(Event.ENTER_FRAME, update);
@@ -136,13 +134,13 @@ package net.hires.debug
 				mem_graph =  Math.min( graph.height, Math.sqrt( Math.sqrt( mem * 5000 ) ) ) - 2;
 				mem_max_graph =  Math.min( graph.height, Math.sqrt( Math.sqrt( mem_max * 5000 ) ) ) - 2;
 				
-				graph.bitmapData.scroll( -1, 0 );
+				graph.scroll( -1, 0 );
 				
-				graph.bitmapData.fillRect( rectangle , theme.bg );
-				graph.bitmapData.setPixel( graph.width - 1, graph.height - fps_graph, theme.fps);
-				graph.bitmapData.setPixel( graph.width - 1, graph.height - ( ( timer - ms ) >> 1 ), theme.ms );
-				graph.bitmapData.setPixel( graph.width - 1, graph.height - mem_graph, theme.mem);
-				graph.bitmapData.setPixel( graph.width - 1, graph.height - mem_max_graph, theme.memmax);
+				graph.fillRect( rectangle , theme.bg );
+				graph.setPixel( graph.width - 1, graph.height - fps_graph, theme.fps);
+				graph.setPixel( graph.width - 1, graph.height - ( ( timer - ms ) >> 1 ), theme.ms );
+				graph.setPixel( graph.width - 1, graph.height - mem_graph, theme.mem);
+				graph.setPixel( graph.width - 1, graph.height - mem_max_graph, theme.memmax);
 				
 				xml.fps = "FPS: " + fps + " / " + stage.frameRate;
 				xml.mem = "MEM: " + mem;
