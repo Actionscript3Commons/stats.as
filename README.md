@@ -12,6 +12,10 @@ This class provides a simple info box that will help you monitor your code perfo
 * MEM Memory your code is using, if it increases per frame is VERY wrong.
 * MAX Maximum memory the application reached.
 
+### Download ###
+
+[Stats.as](http://github.com/mrdoob/stats.as/raw/master/src/net/hires/debug/Stats.as)
+
 ### How to use ###
 
 	addChild( new Stats() );
@@ -19,7 +23,3 @@ This class provides a simple info box that will help you monitor your code perfo
 ### Controls ###
 
 * **LEFT CLICK** on the top-half/bottom-half part of the panel to increase/decrease the movie FPS limit.
-
-### Download ###
-
-[Stats.as](http://github.com/mrdoob/stats.as/raw/master/src/net/hires/debug/Stats.as)
