@@ -14,7 +14,7 @@ This class provides a simple info box that will help you monitor your code perfo
 
 ### Download ###
 
-[Stats.as](http://github.com/mrdoob/stats.as/raw/master/src/net/hires/debug/Stats.as) 
+[Stats.as](http://github.com/mrdoob/stats.as/raw/master/src/net/hires/debug/Stats.as)  
 [Stats.hx](http://github.com/mrdoob/stats.as/raw/master/src/net/hires/debug/Stats.hx) (Ported by [David Wilhelm](http://github.com/bigfish))
 
 ### How to use ###
