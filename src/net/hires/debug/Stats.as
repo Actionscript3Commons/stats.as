@@ -134,9 +134,9 @@ package net.hires.debug {
 				graph.setPixel(graph.width - 1, graph.height - mem_graph, colors.mem);
 				graph.setPixel(graph.width - 1, graph.height - mem_max_graph, colors.memmax);
 				
-				xml.replace('fps', '<fps>FPS: ' + fps + ' / ' + stage.frameRate + '</fps>'); 
-				xml.replace('mem', '<mem>MEM: ' + mem + '</mem>');
-				xml.replace('memMax', '<memMax>MAX: ' + mem_max + '</memMax>');				
+				xml.fps = "FPS: " + fps + " / " + stage.frameRate; 
+				xml.mem = "MEM: " + mem;
+				xml.memMax = "MAX: " + mem_max;			
 				
 				fps = 0;
 				
@@ -144,7 +144,7 @@ package net.hires.debug {
 
 			fps++;
 			
-			xml.replace('ms', '<ms>MS: ' + (timer - ms) + '</ms>');
+			xml.ms = "MS: " + (timer - ms);
 			ms = timer;
 			
 			text.htmlText = xml;
@@ -153,7 +153,7 @@ package net.hires.debug {
 		private function onClick(e : MouseEvent) : void {
 			
 			mouseY / height > .5 ? stage.frameRate-- : stage.frameRate++;
-			xml.replace('fps', '<fps>FPS: ' + fps + ' / ' + stage.frameRate + '</fps>'); 
+			xml.fps = "FPS: " + fps + " / " + stage.frameRate;  
 			text.htmlText = xml;
 			
 		}
