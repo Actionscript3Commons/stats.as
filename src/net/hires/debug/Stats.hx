@@ -25,8 +25,6 @@ import flash.text.StyleSheet;
 import flash.text.TextField;
 import flash.xml.XML;
 
-import net.hires.debug.Stats;
-
 
 class Stats extends Sprite {	
 
@@ -35,7 +33,7 @@ class Stats extends Sprite {
 	static inline var GRAPH_HEIGHT : Int = 50;
 	static inline var TEXT_HEIGHT : Int = 50;
 
-	private var xml : String;
+	private var xml : XML;
 
 	private var text : TextField;
 	private var style : StyleSheet;
@@ -65,7 +63,8 @@ class Stats extends Sprite {
 		mem_max = 0;
 		fps = 0;
 
-		xml = "<xml><fps>FPS:_fps_</fps><ms>MS:_ms_</ms><mem>MEM:_mem_</mem><memMax>MAX:_mem_max_</memMax></xml>";
+
+		xml = new XML("<xml><fps>FPS:</fps><ms>MS:</ms><mem>MEM:</mem><memMax>MAX:</memMax></xml>");
 
 		style = new StyleSheet();
 		style.setStyle('xml', {fontSize:'9px', fontFamily:'_sans', leading:'-2px'});
@@ -145,7 +144,9 @@ class Stats extends Sprite {
 			graph.setPixel(XPOS, ms_graph, Colors.ms);
 			graph.unlock();
 
-			updateStats();
+			xml.fps = "FPS: " + fps + " / " + stage.frameRate; 
+			xml.mem = "MEM: " + mem;
+			xml.memMax = "MAX: " + mem_max;			
 
 			//reset frame and time counters
 			fps = 0;
@@ -155,19 +156,14 @@ class Stats extends Sprite {
 		}
 		//increment number of frames which have occurred in current second
 		fps++;
+
+		xml.ms = "MS: " + (timer - ms);
 		ms = timer;
 		
+		text.htmlText = xml.toString();
 	}
 
-	function updateStats() {
 
-		var myxml = xml;
-		var fpsStr = ' ' + fps + ' / ' + stage.frameRate;
-		myxml = StringTools.replace(xml, '_fps_', fpsStr); 
-		myxml = StringTools.replace(myxml, '_mem_', ' ' + mem);
-		myxml = StringTools.replace(myxml, '_mem_max_', ' ' + mem_max);				
-		text.htmlText = StringTools.replace(myxml, '_ms_', ' ' + (timer - ms));
-	}
 	
 	function normalizeMem(_mem:Float):Int {
 		return Std.int( Math.min( GRAPH_HEIGHT, Math.sqrt(Math.sqrt(_mem * 5000)) ) - 2);
