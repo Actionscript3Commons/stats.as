@@ -12,6 +12,8 @@ This class provides a simple info box that will help you monitor your code perfo
 * MEM Memory your code is using, if it increases per frame is VERY wrong.
 * MAX Maximum memory the application reached.
 
+### Screenshot ###
+
 ![stats_as.png](http://github.com/mrdoob/stats.as/raw/master/assets/stats_as.png)
 
 ### Download ###
