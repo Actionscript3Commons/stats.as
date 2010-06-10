@@ -3,7 +3,7 @@ stats.as
 
 #### Actionscript Performance Monitor ####
 
-![stats_as.png](http://github.com/mrdoob/stats.as/raw/master/assets/stats_as.png)
+[![Flattr this](http://api.flattr.com/button/button-compact-static-100x17.png)](http://flattr.com/thing/20491/stats-as)
 
 This class provides a simple info box that will help you monitor your code performance.
 
@@ -11,6 +11,8 @@ This class provides a simple info box that will help you monitor your code perfo
 * MS Milliseconds needed to render a frame. The lower number, the better.
 * MEM Memory your code is using, if it increases per frame is VERY wrong.
 * MAX Maximum memory the application reached.
+
+![stats_as.png](http://github.com/mrdoob/stats.as/raw/master/assets/stats_as.png)
 
 ### Download ###
 
