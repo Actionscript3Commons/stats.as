@@ -16,15 +16,15 @@ This class provides a simple info box that will help you monitor your code perfo
 
 ![stats_as.png](http://github.com/mrdoob/stats.as/raw/master/assets/stats_as.png)
 
-### Download ###
-
-[Stats.as](http://github.com/mrdoob/stats.as/raw/master/src/net/hires/debug/Stats.as)  
-[Stats.hx](http://github.com/mrdoob/stats.as/raw/master/src/net/hires/debug/Stats.hx) (Ported by [David Wilhelm](http://github.com/bigfish))
-
-### How to use ###
+### Usage ###
 
 	addChild( new Stats() );
 
 ### Controls ###
 
-* **LEFT CLICK** on the top-half/bottom-half part of the panel to increase/decrease the movie FPS limit.
+* **CLICK** Top-half / bottom-half part of the panel to increase/decrease the FPS of the application.
+
+### Download ###
+
+[Stats.as](http://github.com/mrdoob/stats.as/raw/master/src/net/hires/debug/Stats.as)  
+[Stats.hx](http://github.com/mrdoob/stats.as/raw/master/src/net/hires/debug/Stats.hx) (Ported by [David Wilhelm](http://github.com/bigfish))
